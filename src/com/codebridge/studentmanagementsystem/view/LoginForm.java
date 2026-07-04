@@ -28,7 +28,7 @@ public class LoginForm {
         l2.setBounds(70,130,80,30);
         frame.add(l2);
 
-        JTextField t2 =  new JTextField();
+        JPasswordField t2 =  new JPasswordField();
         t2.setBounds(160,130,100,30);
         frame.add(t2);
 
@@ -60,14 +60,36 @@ public class LoginForm {
                 credentials.setPassword(password);
 
                 SignupService signupService =new SignupServiceImpl();
+                boolean found = signupService.checkCredentials(credentials);
+
+                if(found){
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Logged in successfully",
+                            "Success",
+                            JOptionPane.INFORMATION_MESSAGE
+                    );
+                    frame.dispose();
+                    new StudentDisplay();
+                }else {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Invalid username or password",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+
 
             }
+
         };btn2.addActionListener(al2);
 
 
         frame.setVisible(true);
     }
     public static void main(String[] args){
+
         LoginForm obj = new LoginForm();
     }
 }

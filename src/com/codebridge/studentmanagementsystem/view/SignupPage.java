@@ -63,7 +63,7 @@ public class SignupPage {
                     JOptionPane.showMessageDialog(
                             null,
                             "Username Already Exists",
-                            "Success",
+                            "Username exists",
                             JOptionPane.ERROR_MESSAGE
                     );
                 } else {
